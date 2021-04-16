@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+.hero{
+    background-color: #21212b;
+    min-height: 100vh;
+    color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.hero h1{
+    font-size: 3rem;
+}
+
+.hero button{
+    padding: 0.6rem 3rem;
+    border: none;
+    margin: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid rgba(255, 51, 51, 0.7);
+    background-color: transparent;
+   
+    color: white;
+    transition: 0.1s ease-in-out all;
+    position: relative;
+    z-index: 5;
+}
+
+.hero button:hover{
+    background-color: rgba(255, 51, 51, 0.8);
+
+}
+
+svg{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
