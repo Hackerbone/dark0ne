@@ -1,20 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark0ne | Join Us</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <section class="hero">
         <h1>Welcome to dark0ne</h1>
         <p>Fill the form below to prove that you are worthy</p>
         <button>Join us</button>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ff3333" fill-opacity="0.88" d="M0,32L30,42.7C60,53,120,75,180,106.7C240,139,300,181,360,202.7C420,224,480,224,540,240C600,256,660,288,720,277.3C780,267,840,213,900,160C960,107,1020,53,1080,48C1140,43,1200,85,1260,85.3C1320,85,1380,43,1410,21.3L1440,0L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ff3333" fill-opacity="0.88"
+                d="M0,32L30,42.7C60,53,120,75,180,106.7C240,139,300,181,360,202.7C420,224,480,224,540,240C600,256,660,288,720,277.3C780,267,840,213,900,160C960,107,1020,53,1080,48C1140,43,1200,85,1260,85.3C1320,85,1380,43,1410,21.3L1440,0L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+            </path>
+        </svg>
     </section>
+    <section class="about">
+        <h1>Members</h1>
+        <div class="members" id="members">
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        const API_URL = 'https://api.github.com/';
+        const memberElement = document.getElementById("members");
+
+        async function getUser(username){
+            const response = await fetch(API_URL+'users/'+username);
+            var data = await response.json();
+            console.log(data);
+            memberElement.innerHTML += `
+            <div class="card">
+                <div>
+                    <img src=${data.avatar_url} alt="profile-img" />
+                </div>
+                <div>
+                    <h2>${username}</h2>
+                    <a href='https://github.com/${username}' class="visit">Github</a>
+                </div>
+            </div>    
+            `
+
+
+        }
+        var users = ['hackerbone','shero4'];
+
+        users.forEach((user)=>{
+            getUser(user);
+        })
+
+
+
+    </script>
 </body>
+
 </html>
